@@ -7,7 +7,10 @@ import Controls.Keybinds;
 import javax.swing.*;
 
 public class MenuWindow extends JFrame {
-    public void MenuWindows() {
+    public void MenuWindows() throws InterruptedException {
+
+        Keybinds cont = new Keybinds();
+
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(window.EXIT_ON_CLOSE);
         window.setResizable(false);
@@ -23,6 +26,7 @@ public class MenuWindow extends JFrame {
         menu.startGameThread();
         menu.setupGame(window);
 
-        Keybinds cont = new Keybinds();
+        menu.mainbuttons(window);
+
     }
 }

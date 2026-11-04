@@ -24,33 +24,30 @@ public class optionbuttons extends menusprites {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        }
-
-        public void draw(Graphics2D g2) {
-            g2.drawImage(audiobu, 100, 50, null);
-            g2.drawImage(graphicsbu, 450, 50, null);
-            g2.drawImage(controlsbu, 800, 50, null);
-            g2.drawImage(backbu, 1550, 50, null);
-        }
-
-        public optionbuttons() {
-            getoptionbuttons();
-        }
-
-        public void obuttons(JFrame window) {
-            JButton backbutton = new JButton();
-            backbutton.setBounds(1550, 50, 300, 100);
-            window.add(backbutton);
-            backbutton.setOpaque(false);
-
-            backbutton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    MainMenu.gameStates.gameState = 0;
-                    if (MainMenu.gameStates.gameState == 0) {
-                    }
-                    }
-            });
-        }
     }
 
+    public void draw(Graphics2D g2) {
+        g2.drawImage(audiobu, 100, 50, null);
+        g2.drawImage(graphicsbu, 450, 50, null);
+        g2.drawImage(controlsbu, 800, 50, null);
+        g2.drawImage(backbu, 1550, 50, null);
+    }
+
+    public optionbuttons() {
+        getoptionbuttons();
+    }
+
+    public void obuttons(JFrame window) {
+        JButton backbutton = new JButton();
+        backbutton.setBounds(1550, 50, 300, 100);
+        window.add(backbutton);
+        backbutton.setOpaque(false);
+
+        backbutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainMenu.gameStates.gameState = 0;
+            }
+        });
+    }
+}

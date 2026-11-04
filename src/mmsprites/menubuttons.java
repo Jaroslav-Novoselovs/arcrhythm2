@@ -61,30 +61,9 @@ public class menubuttons extends menusprites {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MainMenu.gameStates.gameState = 3;
-                if (MainMenu.gameStates.gameState == 3) {
-                    window.remove(exbutton);
-                    window.remove(opbutton);
-                    window.remove(playbutton);
-                    window.remove(editorbutton);
                 }
-            }
         });
-        backbutton.setBounds(1550, 50, 300, 100);
-        window.add(backbutton);
-        backbutton.setOpaque(false);
-
-        backbutton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainMenu.gameStates.gameState = 0;
-                if (MainMenu.gameStates.gameState == 0) {
-                    window.add(exbutton);
-                    window.add(opbutton);
-                    window.add(playbutton);
-                    window.add(editorbutton);
-                }
-            }
-        });
+        }
     }
-}
+
 

@@ -28,7 +28,6 @@ public class MainMenu extends JPanel implements Runnable {
         gameStates.gameState =  0; //gameStates.titleState;
         playMusic(0);
         mebuttons.mbuttons(window);
-
     }
 
     public void options(JFrame window) {
@@ -38,11 +37,6 @@ public class MainMenu extends JPanel implements Runnable {
 
     public class gameStates {
         public static int gameState;
-        //public static int titleState = 0;
-        //public static int playState = 1;
-        //public static int editorState = 2;
-        //public static int optionsState = 3;
-        //public static int exitState = 4;
     }
 
     public MainMenu() {
@@ -51,13 +45,14 @@ public class MainMenu extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.setFocusable(true);
         this.addKeyListener(cont);
-
     }
 
     public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
     }
+
+    int drawCount = 0;
 
     @Override
     public void run() {
@@ -66,7 +61,6 @@ public class MainMenu extends JPanel implements Runnable {
         long lastTime = System.nanoTime();
         long currentTime;
         long timer = 0;
-        int drawCount = 0;
 
         while (gameThread != null) {
             currentTime = System.nanoTime();
@@ -90,7 +84,7 @@ public class MainMenu extends JPanel implements Runnable {
     public void update() {
         if (gameThread != null) {
             x = x + 3;
-           if (gameStates.gameState == 3) y += 3;
+            if (gameStates.gameState == 3) y += 3;
         }
     }
 
@@ -99,6 +93,8 @@ public class MainMenu extends JPanel implements Runnable {
         super.paintComponent(g);
         g.setColor(Color.white);
         g.drawRect(x, y, 100, 100);
+        g.drawString(String.valueOf(gameStates.gameState), 10, 10);
+        g.drawString(String.valueOf(x), 10, 25);
 
         Graphics2D g2 = (Graphics2D) g;
 
@@ -109,6 +105,20 @@ public class MainMenu extends JPanel implements Runnable {
             case 3:
                 opbuttons.draw(g2);
                 break;
+        }
+    }
+
+    public void mainbuttons (JFrame window) throws InterruptedException {
+        while (true) {
+            switch (gameStates.gameState) {
+                case 0:
+                    mebuttons.mbuttons(window);
+                    break;
+                case 3:
+                    opbuttons.obuttons(window);
+                    break;
+            }
+            Thread.sleep(1000/FPS);
         }
     }
 
